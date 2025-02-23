@@ -73,18 +73,18 @@ body {
     align-items: center;
     justify-content: center;
     font-family: monospace;
-    /* Remove default background-color */
-    transition: color 0.3s, background-color 0.3s; /* Keep transition */
+    /* No default background-color */
+    transition: color 0.3s, background-color 0.3s;
 }
 
-/* Styles for "on" cells (letter pixels) */
+/* Styles for "on" cells */
 .grid-cell.on {
-    color: #eee;  /* Light text on dark background */
+    color: #eee;  /* Light text on dark background (for character and fullWord) */
 }
 
-/* Styles for "off" cells (background pixels) */
+/* Styles for "off" cells */
 .grid-cell.off {
-    color: transparent; /* Make the text transparent */
+    color: transparent; /* Transparent text (blends with background) */
 }
 
 /* Light Theme */
@@ -106,12 +106,22 @@ body.light-theme .letter-grid {
 
 /* Light theme "on" cells */
 body.light-theme .grid-cell.on {
-    color: #333; /* Dark text on light background */
+    color: #333; /* Dark text on light background (for character and fullWord) */
 }
 
 /* Image generation style: only white background */
 .image-cell {
     background-color: white;
+}
+
+/* Styles for Black/White mode */
+body:not(.light-theme) .grid-cell.on {
+    /* In dark theme and black/white mode, on cells are BLACK */
+    background-color: black;
+}
+body.light-theme .grid-cell.on{
+     /* In light theme and black/white mode, on cells are BLACK */
+    background-color: black;
 }
 
 /* Media query for smaller screens */
