@@ -1,5 +1,5 @@
 let timeoutId;
-let isDarkMode = true;
+let isDarkMode = false;
 
 document.getElementById('textInput').addEventListener('input', () => {
     clearTimeout(timeoutId);
