@@ -8,7 +8,7 @@ document.getElementById('textInput').addEventListener('input', () => {
 
 document.getElementById('gridSizeSelect').addEventListener('change', handleGridSizeChange);
 document.getElementById('verticalCheckbox').addEventListener('change', updateGridDisplay);
-document.getElementById('fillModeSelect').addEventListener('change', convertTextToGrid);
+document.getElementById('fillModeSelect').addEventListener('change', convertTextToGrid); // MODIFIED
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 document.getElementById('copyButton').addEventListener('click', copyOutput);
 document.getElementById('downloadButton').addEventListener('click', downloadGridImage);
@@ -41,6 +41,14 @@ function convertTextToGrid() {
     const fillMode = document.getElementById('fillModeSelect').value;
     const gridContainer = document.getElementById('gridContainer');
     gridContainer.innerHTML = '';
+
+    // Add or remove the black-white-mode class based on fillMode
+    if (fillMode === 'blackWhite') {
+        gridContainer.classList.add('black-white-mode');
+    } else {
+        gridContainer.classList.remove('black-white-mode');
+    }
+
 
     const textLength = text.length;
     let scale = 4;
@@ -117,6 +125,8 @@ function createLetterGrid(char, gridSize, fillMode, fullText, scale) {
 function toggleTheme() {
     isDarkMode = !isDarkMode;
     document.body.classList.toggle('light-theme');
+     // Refresh the grid when toggling the theme
+    convertTextToGrid();
 }
 
 function copyOutput() {
@@ -243,3 +253,4 @@ function downloadGridImage() {
 }
 // Initial setup
 updateGridDisplay();
+convertTextToGrid(); // Call this initially to set up the grid
