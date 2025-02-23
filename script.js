@@ -74,7 +74,7 @@ function createLetterGrid(char, gridSize, fillMode, fullText, scale) {
     const ctx = canvas.getContext('2d');
 
     ctx.font = `${gridSize}px monospace`;
-    ctx.fillStyle = 'black'; // This is important for drawing the initial character
+    ctx.fillStyle = 'black'; // Important for initial character drawing
     ctx.textBaseline = 'top';
     ctx.fillText(char, 0, 0);
 
@@ -104,7 +104,9 @@ function createLetterGrid(char, gridSize, fillMode, fullText, scale) {
                 cell.textContent = alpha > 128 ? char : " ";
             } else if (fillMode === 'fullWord') {
                 cell.textContent = alpha > 128 ? fullText : " ";
-            }  // No 'else' for blackWhite, handled by classes
+            } else if (fillMode === 'blackWhite') {
+                cell.textContent = ""; // Crucial: Empty string for blackWhite mode
+            }
 
             gridDiv.appendChild(cell);
         }
