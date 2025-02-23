@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Grid</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <h1>Text to Grid</h1>
+    <div class="input-container">
+        <input type="text" id="textInput" placeholder="Enter text...">
+        <select id="gridSizeSelect">
+            <option value="16">16x16</option>
+            <option value="32" selected>32x32</option>
+            <option value="64">64x64</option>
+        </select>
+        <label class="vertical-checkbox-container">
+            <input type="checkbox" id="verticalCheckbox"> Vertical
+        </label>
+        <select id="fillModeSelect">
+            <option value="character">Character</option>
+            <option value="blackWhite">Black/White</option>
+            <option value="fullWord">Full Word</option>
+        </select>
+        <button id="themeToggle">Toggle Theme</button>
+    </div>
+    <div id="gridContainer">
+        <!-- Grids will be displayed here -->
+    </div>
+    <div class="copy-container">
+        <select id="copyTargetSelect">
+            <option value="notepad">Notepad/Plain Text</option>
+            <option value="discord">Discord</option>
+            <option value="other">Other</option>
+        </select>
+        <button id="copyButton">Copy</button>
+        <button id="downloadButton">Download Image</button>
+    </div>
+    <div id="copyMessage" style="display: none;">Copied!</div>
+    <div id="downloadMessage" style="display: none;">Downloaded!</div>
+    <script src="script.js"></script>
+</body>
+</html>

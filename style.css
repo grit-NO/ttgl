@@ -1,0 +1,168 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1e1e1e;  /* Dark background */
+    color: #eee;               /* Light text */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.input-container, .copy-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+#textInput {
+    padding: 8px;
+    font-size: 16px;
+    background-color: #2a2a2a;
+    color: #eee;
+    border: 1px solid #444;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    flex: 1;
+    min-width: 0;
+}
+
+#themeToggle, #copyButton, #downloadButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#gridSizeSelect, #fillModeSelect, #copyTargetSelect {
+    padding: 8px;
+    font-size: 16px;
+    background-color: #2a2a2a;
+    color: #eee;
+    border: 1px solid #444;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+}
+
+#verticalCheckbox {
+    accent-color: #4CAF50;
+}
+
+#gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.letter-grid {
+    border: none;
+    display: grid;
+}
+
+.grid-cell {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    /* No default background-color */
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Styles for "on" cells */
+.grid-cell.on {
+    color: #eee;  /* Light text on dark background (for character and fullWord) */
+}
+
+/* Styles for "off" cells */
+.grid-cell.off {
+    color: transparent; /* Transparent text (blends with background) */
+}
+
+/* Light Theme */
+body.light-theme {
+    background-color: #fff;  /* White background */
+    color: #333;               /* Dark text */
+}
+
+body.light-theme #textInput, body.light-theme #gridSizeSelect,
+body.light-theme #fillModeSelect, body.light-theme #copyTargetSelect {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+body.light-theme .letter-grid {
+   border:none;
+}
+
+/* Light theme "on" cells */
+body.light-theme .grid-cell.on {
+    color: #333; /* Dark text on light background (for character and fullWord) */
+}
+
+/* Image generation style: only white background */
+.image-cell {
+    background-color: white;
+}
+
+/* Styles for Black/White mode */
+body:not(.light-theme) .grid-cell.on {
+    /* In dark theme and black/white mode, on cells are BLACK */
+    background-color: black;
+}
+body.light-theme .grid-cell.on{
+     /* In light theme and black/white mode, on cells are BLACK */
+    background-color: black;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .input-container, .copy-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    #textInput, #gridSizeSelect, #fillModeSelect, #copyTargetSelect,
+    #themeToggle, #copyButton, #downloadButton {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+    }
+
+    .vertical-checkbox-container {
+        display: none;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .letter-grid {
+        border:none;
+    }
+
+    .grid-cell {
+        font-size: smaller;
+    }
+
+    #copyMessage, #downloadMessage {
+        font-size: smaller;
+        margin-top: 5px;
+    }
+}
