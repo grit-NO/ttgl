@@ -57,7 +57,7 @@ body {
 #gridContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;  /* Default gap, will be overridden in blackWhite mode */
+    gap: 10px;
     justify-content: center;
     width: 100%;
 }
@@ -65,7 +65,6 @@ body {
 .letter-grid {
     border: none;
     display: grid;
-     gap: 0; /* Set default gap to zero */
 }
 
 .grid-cell {
@@ -75,8 +74,6 @@ body {
     justify-content: center;
     font-family: monospace;
     /* No default background-color */
-     padding: 0;  /* Remove padding to ensure no gaps */
-    border: none;  /* Remove any borders */
     transition: color 0.3s, background-color 0.3s;
 }
 
@@ -117,15 +114,13 @@ body.light-theme .grid-cell.on {
     background-color: white;
 }
 
-/* Styles for Black/White mode - CRITICAL FOR NO GAPS */
-.black-white-mode .letter-grid {
-    gap: 0; /* Remove any gap between cells */
-}
-
-body:not(.light-theme) .black-white-mode .grid-cell.on {
+/* Styles for Black/White mode */
+body:not(.light-theme) .grid-cell.on {
+    /* In dark theme and black/white mode, on cells are BLACK */
     background-color: black;
 }
-body.light-theme  .black-white-mode .grid-cell.on{
+body.light-theme .grid-cell.on{
+     /* In light theme and black/white mode, on cells are BLACK */
     background-color: black;
 }
 
@@ -165,12 +160,6 @@ body.light-theme  .black-white-mode .grid-cell.on{
     .grid-cell {
         font-size: smaller;
     }
-
-     .grid-cell.on {
-           font-size: 0;   /* Remove font size */
-           padding: 0;    /* Remove any padding */
-       }
-
 
     #copyMessage, #downloadMessage {
         font-size: smaller;
